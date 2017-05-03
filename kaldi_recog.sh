@@ -26,8 +26,8 @@ echo $modeldir
 cd $KALDI_root
 
 for inputfile in $inputdir/*.wav; do
-
-  file_id=$(basename "$inputfile" .wav)  
+  file_id=$(basename "$inputfile" .wav)
+  sox $inputfile -e signed-integer -r 16000 -b 16 $scratchdir/${file_id}_conv.wav
   IFS="_" read -ra fields <<< $file_id
   spoken_text="${fields[2]}"
   text=${spoken_text//-/ }
@@ -36,7 +36,7 @@ for inputfile in $inputdir/*.wav; do
   datadir=$targetdir/data
   mkdir -p $datadir
 
-  echo "$file_id $inputfile" > $datadir/wav.scp
+  echo "$file_id $scratchdir/${file_id}_conv.wav" > $datadir/wav.scp
   echo "$file_id $speaker" > $datadir/utt2spk
   echo "$speaker $file_id" > $datadir/spk2utt
   echo "$file_id $text" > $datadir/text
