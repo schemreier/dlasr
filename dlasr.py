@@ -47,7 +47,7 @@ SYSTEM_ID = "dlasr"
 SYSTEM_NAME = "DEDICON Daisylezer App ASR Simulation"
 
 #An informative description for this system (this should be fairly short, about one paragraph, and may not contain HTML)
-SYSTEM_DESCRIPTION = "This webservice provides you a ctm file with word alignments given a Frisian speech recording and its transcription."
+SYSTEM_DESCRIPTION = "This webservice provides you a csv file with the transcription of a Daisylezer command."
 
 # ================ Server specific configuration for CLAM ===============
 host = os.uname()[1]
@@ -58,7 +58,7 @@ if 'VIRTUAL_ENV' in os.environ:
 
     if host == 'applejack': #configuration for server in Nijmegen
         HOST = "webservices-lst.science.ru.nl"
-        URLPREFIX = 'frisianalign'
+        URLPREFIX = 'dlasr'
 
         if not 'CLAMTEST' in os.environ:
             ROOT = "/scratch2/www/webservices-lst/live/writable/dlasr/"
