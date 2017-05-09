@@ -43,8 +43,7 @@ for inputfile in $inputdir/*.wav; do
 
   steps/make_mfcc.sh --nj $nj --mfcc-config $modeldir/conf/mfcc.conf $datadir $targetdir/log $targetdir/mfcc
   steps/compute_cmvn_stats.sh $datadir $targetdir/log $targetdir/mfcc
-  steps/online/nnet2/extract_ivectors_online.sh --nj $nj $datadir $modeldir/ivector_extractor $datadir/ivectors_hires
-  steps/nnet3/decode.sh --nj $nj --skip-scoring true --acwt 1.0 --post-decode-acwt 10.0 --online-ivector-dir $datadir/ivectors_hires $resourcedir/graph $datadir $modeldir/decode_${file_id}
+  steps/online/nnet3/decode.sh --nj $nj --acwt 1.2 --post-decode-acwt 10.0 --skip-scoring true $resourcedir/graph $datadir $modeldir/decode_${file_id}
   grep "^${file_id}" $modeldir/decode_${file_id}/log/decode.1.log | cut -d' ' -f2- > $outdir/${file_id}.txt
 done
 
