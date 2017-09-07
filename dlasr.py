@@ -84,6 +84,34 @@ if 'VIRTUAL_ENV' in os.environ:
         ADMINS = ['proycon','antalb','wstoop']
         MAXLOADAVG = 16.0
         INTERFACEOPTIONS = "disableliveinput"
+    elif host == 'mlp01': #configuration for server in Nijmegen
+        HOST = "new.webservices-lst.science.ru.nl"
+        URLPREFIX = 'dlasr'
+
+        if not 'CLAMTEST' in os.environ:
+            ROOT = "/var/www/webservices-lst/live/writable/dlasr/"
+            if 'CLAMSSL' in os.environ:
+                PORT = 443
+            else:
+                PORT = 80
+        else:
+            ROOT = "/var/www/webservices-lst/test/writable/dlasr/"
+            PORT = 81
+
+        USERS_MYSQL = {
+            'host': 'mysql-clamopener.science.ru.nl',
+            'user': 'clamopener',
+            'password': D(open(os.environ['CLAMOPENER_KEYFILE']).read().strip()),
+            'database': 'clamopener',
+            'table': 'clamusers_clamusers'
+        }
+        DEBUG = False
+        REALM = "WEBSERVICES-LST"
+        DIGESTOPAQUE = open(os.environ['CLAM_DIGESTOPAQUEFILE']).read().strip()
+        SECRET_KEY = open(os.environ['CLAM_SECRETKEYFILE']).read().strip()
+        ADMINS = ['proycon','antalb','wstoop']
+        MAXLOADAVG = 16.0
+        INTERFACEOPTIONS = "disableliveinput"
     elif host == "twist":
         DEBUG = True
         ROOT = "/vol/tensusers/eyilmaz/DEDICON/writable/"
