@@ -115,6 +115,11 @@ if 'VIRTUAL_ENV' in os.environ:
     elif host == "twist":
         DEBUG = True
         ROOT = "/vol/tensusers/eyilmaz/DEDICON/writable/"
+    elif host in ("mhysa","caprica"):
+        DEBUG = True
+        ROOT = "/tmp/dlasr/"
+        REALM = "WEBSERVICES-LST"
+        USERS = {'test':pwhash("test",REALM,"test") }
 else:
     raise Exception("I don't know where I'm running from! Got " + host)
 
@@ -125,7 +130,7 @@ else:
 #set security realm, a required component for hashing passwords (will default to SYSTEM_ID if not set)
 #REALM = SYSTEM_ID
 
-USERS = None #no user authentication/security (this is not recommended for production environments!)
+#USERS = None #no user authentication/security (this is not recommended for production environments!)
 
 ADMINS = None #List of usernames that are administrator and can access the administrative web-interface (on URL /admin/)
 
