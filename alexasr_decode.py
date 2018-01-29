@@ -16,7 +16,7 @@ os.system('mkdir -p '+scratchdir)
 for inputfile in glob.glob(inputdir+'/*.wav'):
   decoder = Decoder(resourcedir+"/asr_model_dir_nnet3")
   file_id = basename(inputfile)
-  os.system('sox '+inputfile+' -e signed-integer -r 16000 -b 16 '+scratchdir+file_id+'.wav')
+  os.system('sox '+inputfile+' -e signed-integer -r 16000 -b 16 -c 1 '+scratchdir+file_id+'.wav')
   # Load audio frames from input wav file.
   data = wave.open(scratchdir+file_id+'.wav')
   frames = data.readframes(data.getnframes())
