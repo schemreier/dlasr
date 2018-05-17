@@ -1,0 +1,63 @@
+{
+    "@context": [
+        "https://doi.org/10.5063/schema/codemeta-2.0",
+        "http://schema.org",
+        {
+            "entryPoints": { "@reverse": "schema:actionApplication" },
+            "interfaceType": { "@id": "codemeta:interfaceType" }
+        }
+    ],
+    "@type": "SoftwareSourceCode",
+    "identifier": "dlasr",
+    "name": "DEDICON Daisylezer App ASR Simulation ",
+    "version": "0.1",
+    "description": "DEDICON Daisylezer App ASR Simulation",
+    "license": "unknown",
+	"url": "https://github.com/schemreier/dlasr",
+    "producer": {
+        "@id": "https://www.ru.nl/clst",
+        "@type": "Organization",
+        "name": "Centre for Language and Speech Technology",
+        "url": "https://www.ru.nl/clst",
+        "parentOrganization": {
+            "@id": "https://www.ru.nl/cls",
+            "@type": "Organization",
+            "name": "Centre for Language Studies",
+            "url": "https://www.ru.nl/cls",
+            "parentOrganization": {
+                "@id": "https://www.ru.nl",
+                "name": "Radboud University",
+                "@type": "Organization",
+                "url": "https://www.ru.nl",
+                "location": {
+                    "@type": "Place",
+                    "name": "Nijmegen"
+                }
+            }
+
+        }
+    },
+    "author": [
+		{
+			"@type": "Person",
+			"givenName": "Emre",
+			"familyName": "Yılmaz",
+			"email": "emre.yilmaz@let.ru.nl",
+			"affiliation": { "@id": "https://www.ru.nl/clst" }
+		}
+	],
+	"sourceOrganization": { "@id": "https://www.ru.nl/clst" },
+	"operatingSystem": "POSIX",
+	"codeRepository": "https://github.com/schemreier/dlasr",
+    "softwareRequirements": [
+        {
+			"@type": "SoftwareApplication",
+			"identifier": "kaldi",
+			"name": "kaldi"
+		}
+	],
+	"issueTracker": "https://github.com/schemreier/dlasr/issues",
+	"developmentStatus": "active",
+	"keywords":  [ "nlp", "speech recognition", "dutch" ],
+	"dateCreated": "2017-04-30"
+}
